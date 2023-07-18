@@ -1,0 +1,46 @@
+[core]
+	editor = nvim
+	autocrlf = input
+[alias]
+	s = status -sb
+	rank = shortlog -sn --no-merges
+	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	root = rev-parse --show-toplevel
+	l = log --oneline --decorate --graph
+	ll = l --all
+	pushf = push --force-with-lease
+	rc = rebase --continue
+	fix = commit --fixup
+	ro = r origin/master
+	r = rebase -i --autosquash --autostash --fork-point
+	p = push -u
+	f = fetch -p --tags
+	c = checkout
+[push]
+	default = current
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[pull]
+	rebase = true
+[tag]
+	sort = -creatordate
+[advice]
+	detachedHead = false
+[rerere]
+	enabled = 1
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
+[includeIf "gitdir:/Users/gr*/**"]
+	path = ~/.config/git/include/personal.config
+[includeIf "gitdir:/Users/ge*/**"]
+	path = ~/.config/git/include/work.config
